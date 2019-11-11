@@ -32,7 +32,8 @@ const Component: React.FC<CardProps> = ({
 export const Card = styled(Component)(() => ({
 	backgroundColor: 'white',
 	padding: rem(20),
-	borderRadius: '4px'
+    borderRadius: '6px',
+    boxShadow: '0 2px 3px rgba(0,0,0,.15)'
 }));
 
 
