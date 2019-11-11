@@ -1,14 +1,18 @@
 import React from 'react'
-import styled from 'styled-components';
-
-const Heading = styled.h1(() => ({
-  color: 'red'
-}))
+import { Heading } from '../components/Heading'
+import { Container } from '../components/Container'
+import { Header } from '../components/Header'
+import { LessonCard } from '../components/LessonCard'
 
 const Home = () => (
-  <div>
-    <Heading>Learn React</Heading>
-  </div>
+  <>
+    <Header />
+    <Container>
+      <Heading level={1}>Learn React</Heading>
+
+      <LessonCard title="JSX" subtitle="HTML in JavaScript" url="/lessons/jsx" />
+    </Container>
+  </>
 )
 
 export default Home
