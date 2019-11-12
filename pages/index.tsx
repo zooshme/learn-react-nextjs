@@ -4,6 +4,7 @@ import { Container } from '../components/Container'
 import { Header } from '../components/Header'
 import { LessonCard } from '../components/LessonCard'
 import { ThemeToggle } from '../components/ThemeToggle'
+import Toc from '../lessons/toc.mdx'
 
 const Home = () => (
   <>
@@ -13,7 +14,8 @@ const Home = () => (
 
       <LessonCard title="JSX" subtitle="HTML in JavaScript" url="/lessons/jsx" />
 
-      <ThemeToggle checked={true} />
+      <ThemeToggle themeName={'light'} />
+      <Toc />
     </Container>
   </>
 )
