@@ -13,7 +13,8 @@ const Component: React.FC<CardProps> = ({
 	className,
 	title,
 	subtitle,
-	actions
+	actions,
+	children
 }) => (
 		<div className={className}>
 			<header className="header">
@@ -21,7 +22,7 @@ const Component: React.FC<CardProps> = ({
 				{subtitle && <Heading level={4}>{subtitle}</Heading>}
 			</header>
 			<main>
-
+				{children}
 			</main>
 			{actions && (<footer>
                 {actions}
