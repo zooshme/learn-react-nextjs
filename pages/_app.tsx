@@ -1,12 +1,20 @@
 import React from "react";
 import App from "next/app";
 import { ThemeProvider } from "styled-components";
-import { AppProvider } from "../contexts/AppContext";
+import AppContext, { AppProvider } from "../contexts/AppContext";
 import { createGlobalStyle } from "styled-components";
 
 const themes = {
-  light: {},
-  dark: {}
+  light: {
+    backgroundColor: 'white',
+    color: 'black',
+    highlightColor: 'black'
+  },
+  dark: {
+    backgroundColor: 'black',
+    color: 'white',
+    highlightColor: 'blue'
+  }
 };
 
 const GlobalStyles = createGlobalStyle`

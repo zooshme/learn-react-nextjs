@@ -1,7 +1,13 @@
 import { Context, createContext } from 'react'
 
-const AppContext: Context<{ themeName: string }> = createContext({
-    themeName: 'light'
+type AppContextProps = { 
+    themeName: string; 
+    setThemeName: (themeName:string) => void 
+}
+
+const AppContext: Context<AppContextProps> = createContext({
+    themeName: 'light',
+    setThemeName: (_) => {}
 })
 
 export const { Provider: AppProvider, Consumer: AppConsumer } = AppContext

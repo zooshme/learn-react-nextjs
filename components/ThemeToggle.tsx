@@ -1,46 +1,47 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import AppContext from '../contexts/AppContext';
 
 
 type ThemeToggleProps = React.HTMLAttributes<HTMLDivElement> & {
-    checked: boolean;
+    themeName: string;
 }
 
-const Component: React.FC<ThemeToggleProps> = ({ className }) => (
+
+const ChildComponent = ({ className }) => (
     <div className={className}>
         <div className="indicator"></div>
     </div>
 )
 
-export const ThemeToggle = styled(Component)(({ theme, checked }) => {
+const StyledChildComponent = styled(ChildComponent)(({ theme, themeName }) => {
     const wrapper = {
         width: '90px',
         height: '50px',
         borderRadius: '40px',
-        //border: `1px solid rgba(0,0,0,.25)`, // ${theme.borderColor},
         position: 'relative',
         boxShadow: '0 3px 5px rgba(0,0,0,.15)',
         padding: '5px',
-        backgroundColor: 'white' // theme.backgroundColor
+        backgroundColor: theme.backgroundColor
     };
 
     let indicator = {
         width: '40px',
         height: '40px',
         borderRadius: '40px',
-        backgroundColor: 'black', // theme.highlightColor1,
+        backgroundColor: theme.highlightColor,
         position: 'absolute',
         left: '5px',
         right: 'initial',
         top: '5px'
     }
 
-    if (checked) {
+    if (themeName === 'dark') {
         indicator = {
             ...indicator,
             left: 'initial',
             right: '5px',
-            backgroundColor: 'blue' // theme.highlightColor2,
+            backgroundColor: theme.highlightColor,
         }
     }
 
@@ -48,6 +49,13 @@ export const ThemeToggle = styled(Component)(({ theme, checked }) => {
         ...wrapper,
         '.indicator': indicator
     }
-
-
 })
+
+
+export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className }) => {
+    const { setThemeName, themeName } = React.useContext(AppContext)
+
+    return <div onClick={(e) => {
+        setThemeName(themeName === 'light' ? 'dark' : 'light');
+    }}><StyledChildComponent themeName={themeName} /></div>
+}
